@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home';
 import Play from './pages/Play';
 import DashBoard from './pages/DashBoard';
+import Explore from './pages/Play';
 import { ClockContextProvider } from './contexts/ClockContext';
 import Layout from './shared/Layout';
 import 'tailwindcss/tailwind.css';
@@ -29,9 +30,10 @@ function App() {
         <Layout>
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/market" element={<Market />} />
             <Route exact path="/play" element={<Play vsComputer={true} />} />
             <Route exact path="/dashboard" element={<DashBoard />} />
-            <Route exact path="/market" element={<Market />} />
+            <Route exact path="/explore" element={<Explore />} />
           </Routes>
         </Layout>
       </Router>
