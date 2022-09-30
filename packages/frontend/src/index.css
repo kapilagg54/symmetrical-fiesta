@@ -9,16 +9,13 @@
 @font-face {
   font-family: 'Press Start 2P';
   src: url('assets/fonts/PressStart2P-Regular.ttf') format('tff');
-  font-display: swap;
 }
 
 body {
-  margin: 0;
+  margin: 2;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell'
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -28,22 +25,22 @@ code {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 16px;
+  width: 8px;
+  height: 9px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 100vh;
-  /* background: rgba(70, 20, 100, 0.8); */
+  border-radius: 234px;
+  background: rgba(62, 34, 87, 0.6);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #cbd5e0;
-  border-radius: 100vh;
-  border: 3px solid #edf2f7;
-  background: rgba(70, 20, 100, 0.8);
+  border-radius: 234px;
+  border: 1px solid #edf4f5;
+  background: rgba(62, 34, 87, 0.6);
 }
 
 /* Handle on hover */
