@@ -32,7 +32,7 @@ function DashBoard() {
         contractAddress: gameAddress,
         functionName: 'getPlayerBalance',
         abi: gameContractABI,
-        // msgValue: Moralis.Units.ETH('0.05'),
+        // msgValue: Moralis.Units.ETH('0.02'),
         params: {
           playerAddress: walletAddress,
         },
@@ -40,7 +40,7 @@ function DashBoard() {
       await Moralis.enableWeb3();
       const amountInWei = await Moralis.executeFunction(options);
       const web3 = new Moralis.Web3();
-      const amountInEth = web3.utils.fromWei(amountInWei, 'ether');
+      const amountInEth = web3.utils.fromWei(amountInWei, 'ethereum');
       setBalance(amountInEth);
     };
     getBalance();
@@ -85,27 +85,27 @@ function DashBoard() {
 
   return (
     <PageContainer>
-      <div className=" flex flex-col mt-20 items-center justify-center w-full text-white font-montserrat">
+      <div className=" flex flex-col mt-32 items-center justify-center w-full text-white">
         <div className="w-full flex items-center justify-around">
-          <div className="flex flex-col w-full mx-12">
+          <div className="flex flex-col w-full mx-17">
             {isListNFTOpen && (
               <ListNFT setOpen={setListNFTOpen} nft={activeNFT} />
             )}
-            <div className="bg-dark-purple text-heading-color text-2xl p-4 font-press-start">
+            <div className="bg-dark-purple text-heading-color text-2xl p-3 font-press-start">
               Web3 Chess Balance
             </div>
-            <div className="flex bg-play-comp-color justify-between items-center w-full p-4">
+            <div className="flex bg-play-comp-color justify-between items-center w-full p-3">
               <div className="flex items-center justify-center">
                 <Blockies
                   seed={walletAddress}
-                  size={10}
-                  scale={3}
+                  size={9}
+                  scale={5}
                   color="#dfe"
-                  // bgColor=""
+                  bgColor="#fff"
                   spotColor="#abc"
                   className="identicon"
                 />
-                <h2 className="text-2xl mx-2">
+                <h2 className="text-2xl mx-3">
                   {getAccountString(walletAddress)}
                 </h2>
                 <div
