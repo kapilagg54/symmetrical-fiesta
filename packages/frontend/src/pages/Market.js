@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PageContainer from '../shared/PageContainer';
-// import { useNFTBalance } from '../hooks/useNFTBalance';
-// import { useNFTTokenIds } from '../hooks/useNFTTokenIds';
+import { useNFTBalance } from '../hooks/useNFTBalance';
+import { useNFTTokenIds } from '../hooks/useNFTTokenIds';
 import { useMoralisDapp } from '../contexts/MoralisDappProvider';
 import Moralis from 'moralis';
 import {
-  // useMoralis,
+  useMoralis,
   useMoralisQuery,
   useWeb3ExecuteFunction,
 } from 'react-moralis';
@@ -15,13 +15,13 @@ import matic from '../assets/polygon.svg';
 import { Link } from 'react-router-dom';
 
 function Market() {
-  // const { NFTBalance, getNFTBalance } = useNFTBalance();
+  const { NFTBalance, getNFTBalance } = useNFTBalance();
   const { marketPlace, marketPlaceAbi, nftContract, nftContractABI } =
     useMoralisDapp();
   const contractProcessor = useWeb3ExecuteFunction();
   const [marketNFTs, setNFTs] = useState([]);
-  // const { NFTTokenIds, totalNFTs, getNFTTokenIds } =
-  //   useNFTTokenIds(nftContract);
+  const { NFTTokenIds, totalNFTs, getNFTTokenIds } =
+    useNFTTokenIds(nftContract);
 
   const { data, error, isLoading } = useMoralisQuery('MarketplaceItem');
 
@@ -66,10 +66,10 @@ function Market() {
         }),
       );
       console.log(items);
-      // const arr = [...items, ...items];
-      // const arr2 = [...arr, ...arr];
-      // const arr3 = [...arr2, ...arr2];
-      // const arr4 = [...arr3, ...arr3];
+      const arr = [...items, ...items];
+      const arr2 = [...arr, ...arr];
+      const arr3 = [...arr2, ...arr2];
+      const arr4 = [...arr3, ...arr3];
 
       setNFTs(items);
     };
@@ -79,32 +79,32 @@ function Market() {
 
   console.log(marketNFTs);
 
-  // useEffect(() => {
-  //   const load = async () => {
-  //     try {
-  //       const options = {
-  //         contractAddress: marketPlace,
-  //         functionName: 'fetchMarketItems',
-  //         abi: marketPlaceAbi,
-  //         // msgValue: Moralis.Units.ETH('0.05'),
-  //       };
-  //       const res = await Moralis.executeFunction(options);
-  //       const mappedItems = res.map(i => {
-  //           return {
-  //             nftContract:i.nftContract,
-  //             owner:i.owner,
-  //             seller:i.seller,
-  //             sold:i.sold,
-  //             tokenId:parseInt(i.tokenId),
-  //           }
-  //       });
-  //       // setNFTs(mappedItems);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   load();
-  // }, []);
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const options = {
+          contractAddress: marketPlace,
+          functionName: 'fetchMarketItems',
+          abi: marketPlaceAbi,
+          // msgValue: Moralis.Units.ETH('0.05'),
+        };
+        const res = await Moralis.executeFunction(options);
+        const mappedItems = res.map(i => {
+            return {
+              nftContract:i.nftContract,
+              owner:i.owner,
+              seller:i.seller,
+              sold:i.sold,
+              tokenId:parseInt(i.tokenId),
+            }
+        });
+        // setNFTs(mappedItems);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    load();
+  }, []);
 
   const handleBuy = async (id, price) => {
     const options = {
@@ -124,13 +124,13 @@ function Market() {
 
   return (
     <PageContainer>
-      <h1 className="mt-20 text-heading-color text-5xl font-montserrat underline">
+      <h1 className="mt-12 text-heading-color text-5xl font-montserrat underline">
         Explore NFT Market
       </h1>
 
       {/* <div className="flex flex-wrap flex-1 font-montserrat items-center mt-2 justify-center"> */}
       <div
-        className="font-montserrat mt-12 grid place-items-center grid-cols-2 gap-4  lg:grid-cols-3"
+        className="font-montserrat mt-23 grid place-items-center grid-cols-2 gap-4  lg:grid-cols-3"
         style={{ gridAutoRows: '1fr' }}
       >
         {marketNFTs?.slice(0, 21).map((nft, i) => {
@@ -156,11 +156,11 @@ function Market() {
 
                 <Link
                   to={`https://ipfs.infura.io/ipfs/${nft.image}`}
-                  className="inline-block mt-4 text-white font-semibold text-lg tracking-wide transition duration-200 ease-in-out hover:text-cyan"
+                  className="inline-block mt-5 text-white font-semibold text-lg tracking-wide transition duration-200 ease-in-out hover:text-cyan"
                 >
                   {nft.title} #{nft.tokenId}
                 </Link>
-                <p className="text-softblue my-2 break-all flex-1">
+                <p className="text-softblue my-3 break-all flex-1">
                   {nft.description}
                 </p>
                 <div className="flex justify-between">
