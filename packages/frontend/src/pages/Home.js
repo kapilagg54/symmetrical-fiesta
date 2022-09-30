@@ -20,15 +20,15 @@ function Home() {
       state: {
         gameData: {
           code: 'play-with-comp',
-          startColor: 'white',
+          startColor: 'blue',
           vsComputer: true,
           white: {
             address: walletAddress,
-            remainingTime: 600000,
+            remainingTime: 500000,
           },
           black: {
             address: '0x00',
-            remainingTime: 600000,
+            remainingTime: 500000,
           },
         },
       },
@@ -58,19 +58,19 @@ function Home() {
               className={`flex items-center rounded p-2 bg-purple-900 border-play-hand-btn mb-4 border-2 cursor-pointer justify-center`}
               onClick={() => setCreateModalOpen(true)}
             >
-              <Button text="Create Match" imgSrc={playHand} />
+              <Button text="Create a new Match" imgSrc={playHand} />
             </div>
             <div
               className={`flex items-center rounded p-2 bg-purple-900 border-play-hand-btn mb-4 border-2 cursor-pointer justify-center`}
               onClick={() => setJoinModalOpen(true)}
             >
-              <Button text="Join Match" imgSrc={playHand} />
+              <Button text="Join the Match" imgSrc={playHand} />
             </div>
             <div
               onClick={playWithComputer}
               className={`flex items-center rounded p-2 bg-play-comp-color border-play-hand-btn mb-4 border-2 cursor-pointer justify-center`}
             >
-              <Button text="Play With Computer" imgSrc={Computer} />
+              <Button text="Play With the Computer!" imgSrc={Computer} />
             </div>
           </div>
         </div>
